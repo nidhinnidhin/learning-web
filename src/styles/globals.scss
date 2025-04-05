@@ -1,31 +1,26 @@
-// Variables
-$primary-color: #ED1F24;
+$primary-color: #ed1f24;
 $text-color: #333;
 $background-color: #fff;
 $max-width: 1200px;
 $mobile-padding: 2rem 1rem;
 
-// Mixins
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 @mixin section-container {
   padding: $mobile-padding;
   background-color: $background-color;
   margin: 0 auto;
   max-width: $max-width;
 }
-
 @mixin hover-transform {
   transition: transform 0.3s;
   &:hover {
     transform: translateY(-5px);
   }
 }
-
 @mixin list-style {
   list-style: none;
   li {
@@ -45,22 +40,17 @@ $mobile-padding: 2rem 1rem;
     }
   }
 }
-
-// Global styles
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: Arial, sans-serif;
   color: $text-color;
   line-height: 1.6;
   background-color: #f9f9f9;
 }
-
-// Hero section
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -68,7 +58,6 @@ body {
   @media (max-width: 768px) {
     padding: 3rem 1rem;
   }
-
   .hero-content {
     margin-bottom: 3rem;
     h1 {
@@ -89,12 +78,10 @@ body {
       margin: 0 auto 2rem;
     }
   }
-
   .search-box {
     display: flex;
     max-width: 500px;
     margin: 0 auto;
-
     input {
       flex: 1;
       padding: 0.75rem;
@@ -107,7 +94,6 @@ body {
         color: #999;
       }
     }
-
     button {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
@@ -121,7 +107,6 @@ body {
         background-color: darken($primary-color, 10%);
       }
     }
-
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 0.5rem;
@@ -137,14 +122,12 @@ body {
       }
     }
   }
-
   .program-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     max-width: $max-width;
     margin: 0 auto;
-
     @media (max-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
@@ -156,12 +139,10 @@ body {
       gap: 0.5rem;
       padding: 0 0.5rem;
     }
-
     .card {
       background: white;
       text-align: center;
       @include hover-transform;
-
       img {
         width: 100%;
         max-width: 280px;
@@ -173,7 +154,6 @@ body {
           height: 160px;
         }
       }
-
       h3 {
         font-size: 1.1rem;
         font-weight: 500;
@@ -184,18 +164,14 @@ body {
     }
   }
 }
-
-// Academic opportunities section
 .academic-opportunities {
   @include section-container;
   padding-top: 4rem;
   padding-bottom: 4rem;
-
   .section-header {
     text-align: center;
     max-width: 800px;
     margin: 0 auto 3rem;
-
     h2 {
       font-size: 2rem;
       font-weight: 600;
@@ -210,21 +186,18 @@ body {
       line-height: 1.6;
     }
   }
-
   .programs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     max-width: $max-width;
     margin: 0 auto;
-
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);
     }
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
-
     .program-category {
       background: white;
       padding: 1.5rem;
@@ -234,14 +207,12 @@ body {
       flex-direction: column;
       position: relative;
       min-height: 450px;
-
       h3 {
         color: $text-color;
         margin-bottom: 1rem;
         font-size: 1.4rem;
         font-weight: 600;
       }
-
       .duration {
         @include flex-center;
         gap: 0.5rem;
@@ -255,14 +226,12 @@ body {
           height: 16px;
         }
       }
-
       p {
         color: #666;
         margin-bottom: 1rem;
         font-size: 0.8rem;
         line-height: 1.5;
       }
-
       ul {
         list-style: none;
         margin: 0 0 1.5rem;
@@ -275,7 +244,6 @@ body {
           padding-left: 2rem;
           font-size: 1rem;
           color: #000;
-
           &::before {
             content: "";
             background-image: url("/Vector.png");
@@ -287,13 +255,11 @@ body {
             left: 0;
             top: 0.1rem;
           }
-
           &:last-child {
             margin-bottom: 0;
           }
         }
       }
-
       .more-details {
         display: inline-block;
         color: $primary-color;
@@ -317,18 +283,13 @@ body {
     }
   }
 }
-
-
-// Specialized programs section
 .specialized-programs {
   @include section-container;
   background-color: #f8f8f8;
-
   .program {
     margin-bottom: 2rem;
     padding: 1.5rem 1rem;
     background: white;
-
     .program-header {
       @include flex-center;
       justify-content: flex-start;
@@ -341,7 +302,6 @@ body {
         margin: 0;
       }
     }
-
     ul {
       columns: 2;
       column-gap: 2rem;
@@ -377,7 +337,6 @@ body {
         columns: 1;
       }
     }
-
     &.medical {
       border-left: 4px solid $primary-color;
     }
@@ -392,20 +351,16 @@ body {
     }
   }
 }
-
-// Section content mixin
 @mixin section-content {
   .section-content {
     display: flex;
     gap: 3rem;
     max-width: $max-width;
     margin: 0 auto;
-
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 2rem;
       padding: 0 1rem;
-
       .section-image {
         order: -1;
         img {
@@ -415,7 +370,6 @@ body {
         }
       }
     }
-
     .section-image {
       flex: 1;
       @include flex-center;
@@ -429,13 +383,11 @@ body {
         }
       }
     }
-
     .section-details {
       flex: 1;
       @media (max-width: 768px) {
         text-align: center;
       }
-
       h2 {
         font-size: 2rem;
         font-weight: 600;
@@ -447,7 +399,6 @@ body {
           color: $primary-color;
         }
       }
-
       p {
         color: #666;
         font-size: 1.1rem;
@@ -457,7 +408,6 @@ body {
           font-size: 1rem;
         }
       }
-
       h3 {
         font-size: 1.2rem;
         font-weight: 700;
@@ -466,31 +416,53 @@ body {
           font-size: 1.1rem;
         }
       }
-
       ul {
+        counter-reset: item;
+        padding-left: 0;
+        list-style: none;
+
         @include list-style;
+
         @media (max-width: 768px) {
           display: inline-block;
           text-align: left;
+        }
+
+        li {
+          position: relative;
+          gap: 20px;
+
+          &::before {
+            counter-increment: item;
+            content: counter(item);
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            background-color: #ed1f24;
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+          }
         }
       }
     }
   }
 }
 
-// Medical & Healthcare section
 .medical-healthcare {
   @include section-container;
   @include section-content;
 }
 
-// Engineering & Technology section
 .Engineering-Technology {
   @include section-container;
   @include section-content;
 }
 
-// Business & Management section
 .Business-Management {
   @include section-container;
   @include section-content;
@@ -510,7 +482,7 @@ body {
       margin-bottom: 2.5rem;
 
       span {
-        color: black; // Your accent color - adjust as needed
+        color: black;
       }
     }
   }
@@ -518,7 +490,7 @@ body {
   .testimonial-stack {
     position: relative;
     width: 100%;
-    height: 400px; 
+    height: 400px;
 
     @media (max-width: 768px) {
       height: 550px;
