@@ -117,7 +117,7 @@ export default function Home() {
             <h3>Undergraduate Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -139,7 +139,7 @@ export default function Home() {
             <h3>Graduate Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -161,7 +161,7 @@ export default function Home() {
             <h3>Exchange Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -183,7 +183,7 @@ export default function Home() {
             <h3>Language Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -204,7 +204,7 @@ export default function Home() {
             <h3>Internship Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -223,7 +223,7 @@ export default function Home() {
             <h3>Pathway Programs</h3>
             <div className="duration">
               <Image
-                src="/duration.svg"
+                src="/calender.png"
                 alt="Duration"
                 width={16}
                 height={16}
@@ -264,7 +264,7 @@ export default function Home() {
               and global career opportunities.
             </p>
             <h3>We offer programs in :</h3>
-            <ul>
+            <ul className="program-list">
               <li>Medicine & Surgery (MBBS, MD, BDS)</li>
               <li>Nursing (BSc, MSc)</li>
               <li>Pharmacy (BPharm, PharmD)</li>
@@ -398,7 +398,7 @@ export default function Home() {
                       aria-label="Previous testimonial"
                       onClick={handlePrevClick}
                     >
-                      ←
+                      ← 
                     </button>
 
                     <div className="quote-content">
@@ -448,7 +448,6 @@ export default function Home() {
                     >
                       →
                     </button>
-                    
                   </div>
                 </div>
               </div>
