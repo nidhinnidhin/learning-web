@@ -2,102 +2,303 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <main>
+      <section className="hero">
+        <div className="hero-content">
+          <h1>
+            Your Future, Your <span>Program</span>
+          </h1>
+          <p>
+            Find the right program that fits your goals! Work through our
+            categories and discover your path.
+          </p>
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Find degree or area of study or category"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <button type="button">Search</button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="program-cards">
+          <div className="card">
+            <Image
+              src="/medical.svg"
+              alt="Medical & Healthcare"
+              width={280}
+              height={180}
+            />
+            <h3>Medical & Healthcare</h3>
+          </div>
+          <div className="card">
+            <Image
+              src="/engineering.svg"
+              alt="Engineering & Technology"
+              width={280}
+              height={180}
+            />
+            <h3>Engineering & Technology</h3>
+          </div>
+          <div className="card">
+            <Image
+              src="/business.svg"
+              alt="Business & Management"
+              width={280}
+              height={180}
+            />
+            <h3>Business & Management</h3>
+          </div>
+          <div className="card">
+            <Image
+              src="/vocational.svg"
+              alt="Short-Term & Vocational"
+              width={280}
+              height={180}
+            />
+            <h3>Short-Term & Vocational</h3>
+          </div>
+        </div>
+      </section>
+
+      <section className="academic-opportunities">
+        <div className="section-header">
+          <h2>
+            Explore Your Academic <span>Opportunities</span>
+          </h2>
+          <p>
+            Explore diverse academic programs, each designed to enrich your
+            education, broaden your perspective, and immerse you in new
+            cultures.
+          </p>
+        </div>
+        <div className="programs-grid">
+          <div className="program-category">
+            <h3>Undergraduate Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 3-4 years</span>
+            </div>
+            <p>
+              Bachelor's degree programs in various fields, such as business,
+              engineering, arts and sciences
+            </p>
+            <ul>
+              <li>Earn an internationally recognized degree</li>
+              <li>Study at top universities worldwide</li>
+              <li>Gain cultural and global exposure</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+          <div className="program-category">
+            <h3>Graduate Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 1-5 years</span>
+            </div>
+            <p>
+              Master's and Ph.D. programs in specialized fields such as
+              business, law, medicine, and engineering.
+            </p>
+            <ul>
+              <li>Advance your career with a higher degree</li>
+              <li>Learn from top faculty and industry experts</li>
+              <li>Research opportunities in leading institutions</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+          <div className="program-category">
+            <h3>Exchange Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 3 months – 1 year</span>
+            </div>
+            <p>
+              Short-term programs that allow students to study abroad for a
+              semester or academic year.
+            </p>
+            <ul>
+              <li>Experience different education systems</li>
+              <li>Transfer credits to your home university</li>
+              <li>Cultural exchange and networking</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+          <div className="program-category">
+            <h3>Language Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 2 weeks – 1 year</span>
+            </div>
+            <p>
+              Programs that focus on language learning and cultural immersion.
+            </p>
+            <ul>
+              <li>Learn from native-speaking instructors</li>
+              <li>Practice in real-world environments</li>
+              <li>Experience full cultural immersion</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+          <div className="program-category">
+            <h3>Internship Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 1 month – 1 year</span>
+            </div>
+            <p>Programs that combine study with practical work experience.</p>
+            <ul>
+              <li>Gain hands-on industry experience</li>
+              <li>Build your international career network</li>
+              <li>Boost employability with global exposure</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+          <div className="program-category">
+            <h3>Pathway Programs</h3>
+            <div className="duration">
+              <Image
+                src="/duration.svg"
+                alt="Duration"
+                width={16}
+                height={16}
+              />
+              <span>Duration: 6 months – 2 years</span>
+            </div>
+            <p>
+              Preparatory programs designed to help students transition into
+              undergraduate or graduate studies.
+            </p>
+            <ul>
+              <li>Improve academic and language skills</li>
+              <li>Meet entry requirements for universities</li>
+              <li>Smooth transition into degree programs</li>
+            </ul>
+            <button className="more-details">+ More Details</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="medical-healthcare">
+        <div className="section-content">
+          <div className="section-image">
+            <Image
+              src="/medical.svg"
+              alt="Medical & Healthcare"
+              width={600}
+              height={400}
+            />
+          </div>
+          <div className="section-details">
+            <h2>
+              <span>Medical</span> & Health care
+            </h2>
+            <p>
+              Looking to build a career in medicine and healthcare? Studying
+              abroad gives you access to top universities, advanced facilities,
+              and global career opportunities.
+            </p>
+            <h3>We offer programs in :</h3>
+            <ul>
+              <li>Medicine & Surgery (MBBS, MD, BDS)</li>
+              <li>Nursing (BSc, MSc)</li>
+              <li>Pharmacy (BPharm, PharmD)</li>
+              <li>
+                Allied Health Sciences (Physiotherapy, Radiology, Lab
+                Technology)
+              </li>
+              <li>Public Health & Healthcare Management (MPH, MHA)</li>
+              <li>Public Health & Healthcare Management (MPH, MHA)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="Engineering-Technology">
+        <div className="section-content">
+          <div className="section-details">
+            <h2>
+              <span>Engineering</span> & Technology
+            </h2>
+            <p>
+              Want a career in engineering and technology? Study abroad for top
+              universities, advanced labs, and global opportunities!
+            </p>
+            <h3>We offer programs in :</h3>
+            <ul>
+              <li>Computer Science & IT</li>
+              <li>Mechanical Engineering</li>
+              <li>Electrical & Electronics Engineering</li>
+              <li>Civil & Structural Engineering</li>
+              <li>Chemical & Environmental Engineering</li>
+              <li>Biomedical Engineering</li>
+            </ul>
+          </div>
+          <div className="section-image">
+            <Image
+              src="/engineering.svg"
+              alt="Engineering & Technology"
+              width={600}
+              height={400}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="Business-Management">
+        <div className="section-content">
+          <div className="section-image">
+            <Image
+              src="/business.svg"
+              alt="Business & Management"
+              width={600}
+              height={400}
+            />
+          </div>
+          <div className="section-details">
+            <h2>
+              <span>Business</span> & Management
+            </h2>
+            <p>
+              Want a successful business career? Study abroad for top universities, global
+              networking, and industry-leading education!
+            </p>
+            <h3>We offer programs in :</h3>
+            <ul>
+              <li>Business Administration (BBA, MBA)</li>
+              <li>Finance & Accounting</li>
+              <li>Marketing & Digital Marketing</li>
+              <li>Human Resource Management (HRM)</li>
+              <li>Entrepreneurship & Innovation</li>
+              <li>Supply Chain & Logistics Management</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
