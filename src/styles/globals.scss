@@ -2,18 +2,56 @@
 $primary-color: #ff4444;
 $text-color: #333;
 $background-color: #fff;
+$max-width: 1200px;
+$mobile-padding: 2rem 1rem;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin section-container {
+  padding: $mobile-padding;
+  background-color: $background-color;
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+@mixin hover-transform {
+  transition: transform 0.3s;
+  &:hover { transform: translateY(-5px); }
+}
+
+@mixin list-style {
+  list-style: none;
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background-color: $primary-color;
+      border-radius: 50%;
+    }
+  }
+}
 
 // Global styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: Arial, sans-serif;
   color: $text-color;
   line-height: 1.6;
+  background-color: #f9f9f9;
 }
 
 // Hero section
@@ -21,88 +59,63 @@ body {
   padding: 4rem 2rem;
   text-align: center;
   background-color: $background-color;
-
-  @media (max-width: 768px) {
-    padding: 3rem 1rem;
-  }
+  @media (max-width: 768px) { padding: 3rem 1rem; }
 
   .hero-content {
     margin-bottom: 3rem;
-
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       font-weight: 600;
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
-
-      span {
-        color: $primary-color;
-      }
+      @media (max-width: 768px) { font-size: 2rem; }
+      span { color: $primary-color; }
     }
-
     p {
       font-size: 1rem;
       color: #666;
       max-width: 600px;
       margin: 0 auto 2rem;
     }
+  }
 
-    .search-box {
-      display: flex;
-      max-width: 500px;
-      margin: 0 auto;
+  .search-box {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
 
-      @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 0.5rem;
+    input {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      &::placeholder { color: #999; }
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      &:hover { background-color: darken($primary-color, 10%); }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0 1rem;
+      input, button {
         width: 100%;
-        padding: 0 1rem;
-
-        input {
-          width: 100%;
-          border-radius: 4px;
-          border-right: 1px solid #ddd;
-          margin: 0;
-        }
-
-        button {
-          width: 100%;
-          border-radius: 4px;
-          margin: 0;
-        }
+        border-radius: 4px;
       }
-
-      input {
-        flex: 1;
-        padding: 0.75rem;
-        font-size: 1rem;
-        border: 1px solid #ddd;
-        border-right: none;
-        border-radius: 4px 0 0 4px;
-        outline: none;
-
-        &::placeholder {
-          color: #999;
-        }
-      }
-
-      button {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        background-color: $primary-color;
-        color: white;
-        border: none;
-        border-radius: 0 4px 4px 0;
-        cursor: pointer;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
+      input { border-right: 1px solid #ddd; }
     }
   }
 
@@ -110,51 +123,40 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-    max-width: 1200px;
+    max-width: $max-width;
     margin: 0 auto;
 
     @media (max-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
     }
-
     @media (max-width: 576px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 0.5rem;
       padding: 0 0.5rem;
-
-      .card {
-        transform: scale(0.9);
-        margin: -0.5rem;
-      }
     }
 
     .card {
       background: white;
       text-align: center;
-      transition: transform 0.3s;
+      @include hover-transform;
 
-      &:hover {
-        transform: translateY(-5px);
-      }
-
-        img {
-        width: 280px;
+      img {
+        width: 100%;
+        max-width: 280px;
         height: 200px;
         margin-bottom: 1rem;
         border-radius: 8px;
         object-fit: cover;
+        @media (max-width: 576px) { height: 160px; }
       }
 
       h3 {
         font-size: 1.1rem;
         font-weight: 500;
-        color: #333;
+        color: $text-color;
         margin: 0;
         padding: 0 1rem;
       }
@@ -164,8 +166,9 @@ body {
 
 // Academic opportunities section
 .academic-opportunities {
-  padding: 4rem 2rem;
-  background-color: #f8f8f8;
+  @include section-container;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
   .section-header {
     text-align: center;
@@ -176,12 +179,8 @@ body {
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 1rem;
-
-      span {
-        color: $primary-color;
-      }
+      span { color: $primary-color; }
     }
-
     p {
       color: #666;
       font-size: 1.1rem;
@@ -193,49 +192,36 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 1200px;
+    max-width: $max-width;
     margin: 0 auto;
 
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
+    @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
 
     .program-category {
       background: white;
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
+      @include hover-transform;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 450px;
 
       h3 {
-        color: #333;
+        color: $text-color;
         margin-bottom: 1rem;
         font-size: 1.4rem;
         font-weight: 600;
       }
 
       .duration {
-        display: flex;
-        align-items: center;
+        @include flex-center;
         gap: 0.5rem;
         margin-bottom: 1rem;
         color: $primary-color;
         font-size: 0.9rem;
-
-        img {
-          width: 16px;
-          height: 16px;
-        }
+        img { width: 16px; height: 16px; }
       }
 
       p {
@@ -249,14 +235,12 @@ body {
         list-style: none;
         margin: 0 0 1.5rem;
         padding: 0;
-
         li {
           margin-bottom: 0.75rem;
           position: relative;
           padding-left: 1.75rem;
           font-size: 1rem;
           color: #555;
-
           &:before {
             content: "✓";
             color: #4caf50;
@@ -265,10 +249,7 @@ body {
             top: 0;
             font-weight: bold;
           }
-
-          &:last-child {
-            margin-bottom: 0;
-          }
+          &:last-child { margin-bottom: 0; }
         }
       }
 
@@ -277,49 +258,19 @@ body {
         color: $primary-color;
         font-size: 0.9rem;
         font-weight: 500;
-        padding: 0.5rem 1rem;
-        border: 1px solid $primary-color;
-        border-radius: 4px;
+        padding: 0.5rem 1.5rem;
+        margin: 2rem 0 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease;
-
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        background: transparent;
+        border: none;
+        border-radius: 4px;
         &:hover {
-          background: $primary-color;
           color: white;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .programs-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 3rem 1.5rem;
-
-    .section-header {
-      h2 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-    }
-
-    .programs-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-
-      .program-category {
-        padding: 1.5rem;
-
-        h3 {
-          font-size: 1.3rem;
+          background-color: $primary-color;
         }
       }
     }
@@ -328,27 +279,21 @@ body {
 
 // Specialized programs section
 .specialized-programs {
-  padding: 3rem 2rem;
+  @include section-container;
   background-color: #f8f8f8;
-  margin: 0 auto;
-  max-width: 1200px;
 
   .program {
-    max-width: 1200px;
-    margin: 0 auto 2rem;
-    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
     background: white;
-    border-radius: 0;
-    box-shadow: none;
 
     .program-header {
-      display: flex;
-      align-items: center;
+      @include flex-center;
+      justify-content: flex-start;
       gap: 1rem;
       margin-bottom: 1.5rem;
-
       h2 {
-        color: #333;
+        color: $text-color;
         font-size: 1.6rem;
         font-weight: 600;
         margin: 0;
@@ -356,19 +301,16 @@ body {
     }
 
     ul {
-      list-style: none;
       columns: 2;
       column-gap: 2rem;
       margin: 0;
       padding: 0;
-
       li {
         margin-bottom: 0.5rem;
         position: relative;
         padding-left: 1.25rem;
         font-size: 0.95rem;
         color: #555;
-
         &:before {
           content: "•";
           color: $primary-color;
@@ -377,405 +319,93 @@ body {
           top: -1px;
         }
       }
+      @media (max-width: 768px) { columns: 1; }
     }
 
-    &.medical {
-      border-left: 4px solid #ff4444;
+    &.medical { border-left: 4px solid $primary-color; }
+    &.engineering { border-left: 4px solid #2196f3; }
+    &.business { border-left: 4px solid #4caf50; }
+    &.vocational { border-left: 4px solid #ff9800; }
+  }
+}
+
+// Section content mixin
+@mixin section-content {
+  .section-content {
+    display: flex;
+    gap: 3rem;
+    max-width: $max-width;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 1.5rem;
     }
 
-    &.engineering {
-      border-left: 4px solid #2196f3;
+    .section-image {
+      flex: 1;
+      @include flex-center;
+      img {
+        width: 80%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+        @media (max-width: 768px) { width: 100%; }
+      }
     }
 
-    &.business {
-      border-left: 4px solid #4caf50;
-    }
+    .section-details {
+      flex: 1;
+      @media (max-width: 768px) { text-align: center; }
 
-    &.vocational {
-      border-left: 4px solid #ff9800;
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        @media (max-width: 768px) { font-size: 1.75rem; }
+        span { color: $primary-color; }
+      }
+
+      p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        @media (max-width: 768px) { font-size: 1rem; }
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        @media (max-width: 768px) { font-size: 1.1rem; }
+      }
+
+      ul {
+        @include list-style;
+        @media (max-width: 768px) {
+          display: inline-block;
+          text-align: left;
+        }
+      }
     }
   }
 }
 
 // Medical & Healthcare section
 .medical-healthcare {
-  padding: 2rem 2rem;
-  background-color: #fff;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  .section-content {
-    display: flex;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    .section-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 80%;
-        height: auto;
-        border-radius: 12px;
-        object-fit: cover;
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-      }
-    }
-
-    .section-details {
-      flex: 1;
-
-      h2 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-
-        span {
-          color: $primary-color;
-        }
-      }
-
-      p {
-        color: #666;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-      }
-
-      ul {
-        list-style: none;
-
-        li {
-          position: relative;
-          padding-left: 1.5rem;
-          margin-bottom: 0.75rem;
-
-          &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background-color: $primary-color;
-            border-radius: 50%;
-          }
-        }
-      }
-    }
-  }
+  @include section-container;
+  @include section-content;
 }
 
+// Engineering & Technology section
 .Engineering-Technology {
-  padding: 2rem 2rem;
-  background-color: #fff;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  @media (max-width: 768px) {
-    padding: 2rem 1rem;
-  }
-
-  .section-content {
-    display: flex;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @media (max-width: 768px) {
-      flex-direction: column-reverse;
-      gap: 1.5rem;
-    }
-
-    .section-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 80%;
-        height: auto;
-        border-radius: 12px;
-        object-fit: cover;
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-      }
-    }
-
-    .section-details {
-      flex: 1;
-
-      @media (max-width: 768px) {
-        text-align: center;
-      }
-
-      h2 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-
-        @media (max-width: 768px) {
-          font-size: 1.75rem;
-        }
-
-        span {
-          color: $primary-color;
-        }
-      }
-
-      p {
-        color: #666;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-
-        @media (max-width: 768px) {
-          font-size: 1rem;
-        }
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-
-        @media (max-width: 768px) {
-          font-size: 1.1rem;
-        }
-      }
-
-      ul {
-        list-style: none;
-
-        @media (max-width: 768px) {
-          display: inline-block;
-          text-align: left;
-        }
-
-        li {
-          position: relative;
-          padding-left: 1.5rem;
-          margin-bottom: 0.75rem;
-
-          &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background-color: $primary-color;
-            border-radius: 50%;
-          }
-        }
-      }
-    }
-  }
+  @include section-container;
+  @include section-content;
 }
+
+// Business & Management section
 .Business-Management {
-  padding: 2rem 2rem;
-  background-color: #fff;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  @media (max-width: 768px) {
-    padding: 2rem 1rem;
-  }
-
-  .section-content {
-    display: flex;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @media (max-width: 768px) {
-      flex-direction: column-reverse;
-      gap: 1.5rem;
-    }
-
-    .section-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 80%;
-        height: auto;
-        border-radius: 12px;
-        object-fit: cover;
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-      }
-    }
-
-    .section-details {
-      flex: 1;
-
-      @media (max-width: 768px) {
-        text-align: center;
-      }
-
-      h2 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-
-        @media (max-width: 768px) {
-          font-size: 1.75rem;
-        }
-
-        span {
-          color: $primary-color;
-        }
-      }
-
-      p {
-        color: #666;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-
-        @media (max-width: 768px) {
-          font-size: 1rem;
-        }
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-
-        @media (max-width: 768px) {
-          font-size: 1.1rem;
-        }
-      }
-
-      ul {
-        list-style: none;
-
-        @media (max-width: 768px) {
-          display: inline-block;
-          text-align: left;
-        }
-
-        li {
-          position: relative;
-          padding-left: 1.5rem;
-          margin-bottom: 0.75rem;
-
-          &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background-color: $primary-color;
-            border-radius: 50%;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Responsive design
-@media (max-width: 1024px) {
-  .medical-healthcare,
-  .engineering-technology {
-    padding: 3rem 1.5rem;
-
-    .section-content {
-      flex-direction: column;
-      gap: 2rem;
-
-      .section-image,
-      .section-details {
-        flex: none;
-        width: 100%;
-      }
-
-      .section-details {
-        h2 {
-          font-size: 1.75rem;
-        }
-
-        p {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-
-  .programs-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .medical-healthcare,
-  .engineering-technology {
-    padding: 3rem 1.5rem;
-
-    .section-content {
-      flex-direction: column;
-      gap: 2rem;
-
-      .section-image,
-      .section-details {
-        flex: none;
-        width: 100%;
-      }
-
-      .section-details {
-        h2 {
-          font-size: 1.75rem;
-        }
-
-        p {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-
-  .programs-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero .program-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .programs-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .specialized-programs .program ul {
-    columns: 1;
-  }
+  @include section-container;
+  @include section-content;
 }
