@@ -23,7 +23,7 @@ export default function Home() {
         <div className="program-cards">
           <div className="card">
             <Image
-              src="/medical.svg"
+              src="/medical.png"
               alt="Medical & Healthcare"
               width={280}
               height={180}
@@ -32,7 +32,7 @@ export default function Home() {
           </div>
           <div className="card">
             <Image
-              src="/engineering.svg"
+              src="/engineering.png"
               alt="Engineering & Technology"
               width={280}
               height={180}
@@ -41,7 +41,7 @@ export default function Home() {
           </div>
           <div className="card">
             <Image
-              src="/business.svg"
+              src="/business.png"
               alt="Business & Management"
               width={280}
               height={180}
@@ -50,7 +50,7 @@ export default function Home() {
           </div>
           <div className="card">
             <Image
-              src="/vocational.svg"
+              src="/vocational.png"
               alt="Short-Term & Vocational"
               width={280}
               height={180}
@@ -207,10 +207,10 @@ export default function Home() {
         <div className="section-content">
           <div className="section-image">
             <Image
-              src="/medical.svg"
+              src="/medical.png"
               alt="Medical & Healthcare"
-              width={600}
-              height={400}
+              width={280}
+              height={180}
             />
           </div>
           <div className="section-details">
@@ -260,10 +260,10 @@ export default function Home() {
           </div>
           <div className="section-image">
             <Image
-              src="/engineering.svg"
+              src="/engineering.png"
               alt="Engineering & Technology"
-              width={600}
-              height={400}
+              width={280}
+              height={180}
             />
           </div>
         </div>
@@ -273,10 +273,10 @@ export default function Home() {
         <div className="section-content">
           <div className="section-image">
             <Image
-              src="/business.svg"
+              src="/business.png"
               alt="Business & Management"
-              width={600}
-              height={400}
+              width={280}
+              height={180}
             />
           </div>
           <div className="section-details">

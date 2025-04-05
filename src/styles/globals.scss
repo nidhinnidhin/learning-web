@@ -143,11 +143,12 @@ body {
         transform: translateY(-5px);
       }
 
-      img {
-        width: 100%;
-        height: auto;
+        img {
+        width: 280px;
+        height: 200px;
         margin-bottom: 1rem;
         border-radius: 8px;
+        object-fit: cover;
       }
 
       h3 {
@@ -411,10 +412,19 @@ body {
 
     .section-image {
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       img {
         width: 80%;
         height: auto;
         border-radius: 12px;
+        object-fit: cover;
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
     }
 
