@@ -1,16 +1,57 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+
+const testimonials = [
+  {
+    id: 1,
+    quote:
+      "I was nervous about studying abroad, but their team made it feel so easy. They guided me through every step—from choosing the right university to securing my visa. Now, I'm living my dream in Canada!",
+    name: "Full Name",
+    abroadChoice: "Canada",
+    image: "/testimonial.png",
+  },
+  {
+    id: 2,
+    quote:
+      "The application process seemed overwhelming at first, but with their expert guidance, I was able to navigate it smoothly. My experience studying in Australia has been life-changing!",
+    name: "Jane Smith",
+    abroadChoice: "Australia",
+    image: "/testimonial.png",
+  },
+  {
+    id: 3,
+    quote:
+      "Their personalized approach made all the difference. They helped me find a program that perfectly matched my career goals, and now I'm thriving in my studies abroad!",
+    name: "John Davis",
+    abroadChoice: "United Kingdom",
+    image: "/testimonial.png",
+  },
+];
 
 export default function Home() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNextClick = () => {
+    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <main>
       <section className="hero">
         <div className="hero-content">
           <h1>
             Your Future, Your <span>Program</span>
+            <br /> Find It Today
           </h1>
           <p>
-            Find the right program that fits your goals! Work through our
-            categories and discover your path.
+            Find the right program that fits your career goals. Browse through
+            our categories and discover opportunities worldwide.
           </p>
           <div className="search-box">
             <input
@@ -284,8 +325,8 @@ export default function Home() {
               <span>Business</span> & Management
             </h2>
             <p>
-              Want a successful business career? Study abroad for top universities, global
-              networking, and industry-leading education!
+              Want a successful business career? Study abroad for top
+              universities, global networking, and industry-leading education!
             </p>
             <h3>We offer programs in :</h3>
             <ul>
@@ -296,6 +337,121 @@ export default function Home() {
               <li>Entrepreneurship & Innovation</li>
               <li>Supply Chain & Logistics Management</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="Engineering-Technology">
+        <div className="section-content">
+          <div className="section-details">
+            <h2>
+              <span>Short-Term </span> & Vocational
+            </h2>
+            <p>
+              Want industry-specific skills fast? Short-term programs abroad
+              offer hands-on training and job-ready certifications!
+            </p>
+            <h3>We offer programs in :</h3>
+            <ul>
+              <li>Culinary Arts & Hospitality</li>
+              <li>Fashion & Design</li>
+              <li>Film & Media Studies</li>
+              <li>Language & Communication</li>
+              <li>Automotive & Mechanical Trades</li>
+              <li>Health & Wellness</li>
+            </ul>
+          </div>
+          <div className="section-image">
+            <Image
+              src="/vocational.png"
+              alt="Engineering & Technology"
+              width={280}
+              height={180}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="testimonials">
+        <div className="section-content">
+          <div className="testimonial-stack">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className={`testimonial-card ${
+                  index === activeIndex
+                    ? "active"
+                    : index === (activeIndex + 1) % testimonials.length
+                    ? "next-card"
+                    : index === (activeIndex + 2) % testimonials.length
+                    ? "third-card"
+                    : "hidden-card"
+                }`}
+              >
+                <h2>
+                  See How Others Made It <span>Happen</span>
+                </h2>
+                <div className="testimonial-grid">
+                  <div className="quote-container">
+                    <button
+                      className="nav-button prev"
+                      aria-label="Previous testimonial"
+                      onClick={handlePrevClick}
+                    >
+                      ←
+                    </button>
+
+                    <div className="quote-content">
+                      <blockquote>"{testimonial.quote}"</blockquote>
+                    </div>
+                  </div>
+
+                  {/* Right side - Profile */}
+                  <div className="profile-container">
+                    <div className="testimonial-label">
+                      <span>Testimonial</span>
+                    </div>
+
+                    <div className="profile-content">
+                      <div className="profile-image-wrapper">
+                        <div className="image-border"></div>
+                        <div className="profile-image">
+                          <Image
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            width={160}
+                            height={160}
+                            objectFit="cover"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="profile-details">
+                        <div className="detail-item">
+                          <div className="detail-label">Name</div>
+                          <div className="detail-value">{testimonial.name}</div>
+                        </div>
+
+                        <div className="detail-item">
+                          <div className="detail-label">Abroad Choice</div>
+                          <div className="detail-value">
+                            {testimonial.abroadChoice}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      className="nav-button next"
+                      aria-label="Next testimonial"
+                      onClick={handleNextClick}
+                    >
+                      →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
